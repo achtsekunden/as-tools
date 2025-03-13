@@ -62,7 +62,7 @@ function as_tools_render_sitemap_option() {
     <fieldset>
         <label for="as_check_sitemap_db">
             <input type="checkbox" id="as_check_sitemap_db" name="as_check_sitemap_db" value="1" class="wppd-ui-toggle" <?php checked(1, $option, true); ?> />
-            Enable sitemap generation
+            enable Sitemaps
         </label>
         <p class="description">Enable this option to generate the sitemap. If disabled, the sitemap will not be created. Maybe you have to update your permalinks. <br>If enabled, your Sitemap is here <a href="<?php echo site_url();?>/as-sitemap_xml" target="_blank"><?php echo site_url();?>/as-sitemap.xml</a> <span class="as_tooltip"><span class="as_tooltip_icon">!</span><span class="as_tooltip-text">This sitemap is not working with YOAST Sitemap. If you want to use YOAST and this Sitemap, just deactivate the YOAST Sitemap:<br>
         Go to SEO > General in the Yoast settings.

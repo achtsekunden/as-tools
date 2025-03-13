@@ -10,6 +10,11 @@
 
 ## Changelog
 
+## [0.2.14] - 2025-03-13
+- adding Tab Tools + new register files, switching all tool functions to tab Tool
+- adding new Tool function to Tools -> clone Posts / Pages
+
+
 ## [0.2.13] - 2025-03-11
 - adding block XSS. 
 - adding Restrict access. 

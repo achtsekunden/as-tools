@@ -2,7 +2,7 @@
 /*
 Plugin Name: AS-Tools
 Description: Adds more SEO tools and some helping functions to your theme: - Uninstall notes: Deactivate all checkboxes, then uninstall
-Version: 0.2.13
+Version: 0.2.14
 Author: achtsekunden.com
 Author URI: https://achtsekunden.com
 */
@@ -92,12 +92,12 @@ function as_tools_render_admin_page() {
         <h1>AS-Tools (<?php echo esc_html($plugin_version); ?>)</h1>
         <h2 class="nav-tab-wrapper">
             <a href="?page=as-tools&tab=general" class="nav-tab <?php echo $active_tab == 'general' ? 'nav-tab-active' : ''; ?>">General</a>
+            <a href="?page=as-tools&tab=tools" class="nav-tab <?php echo $active_tab == 'tools' ? 'nav-tab-active' : ''; ?>">Tools</a>
             <a href="?page=as-tools&tab=performance" class="nav-tab <?php echo $active_tab == 'performance' ? 'nav-tab-active' : ''; ?>">Performance</a>
             <a href="?page=as-tools&tab=security" class="nav-tab <?php echo $active_tab == 'security' ? 'nav-tab-active' : ''; ?>">Security</a>
             <a href="?page=as-tools&tab=seo" class="nav-tab <?php echo $active_tab == 'seo' ? 'nav-tab-active' : ''; ?>">SEO</a>
             <a href="?page=as-tools&tab=advanced" class="nav-tab <?php echo $active_tab == 'advanced' ? 'nav-tab-active' : ''; ?>">Header | Footer</a>
             <a href="?page=as-tools&tab=serverinfo" class="nav-tab <?php echo $active_tab == 'serverinfo' ? 'nav-tab-active' : ''; ?>">Serverinfo</a>
-            <!--<a href="?page=as-tools&tab=sitemap" class="nav-tab <?php echo $active_tab == 'sitemap' ? 'nav-tab-active' : ''; ?>">Sitemap</a>-->
         </h2>
         <form method="post" action="options.php" class="as_form_<?php echo $active_tab;?>">
             <?php
@@ -134,6 +134,9 @@ function as_tools_register_settings() {
     ### ----------- Serverinfo Settings
     include_once plugin_dir_path(__FILE__) . 'include/as_tools_register_tab_serverinfo.php';
 
+    ### ----------- TOOLS Settings
+    include_once plugin_dir_path(__FILE__) . 'include/as_tools_register_tab_tools.php';
+
 }
 add_action('admin_init', 'as_tools_register_settings');
 
@@ -159,7 +162,7 @@ function as_tools_seo_section_callback() {
 function as_tools_serverinfo_section_callback() {
     echo '';
 }
-function as_tools_sitemap_section_callback() {
+function as_tools_tools_section_callback() {
     echo '';
 }
 
@@ -182,9 +185,14 @@ include_once plugin_dir_path(__FILE__) . 'include/as_tools_tab_security.php';
 ###### Render Fields FOR TAB SERVERINFO
 include_once plugin_dir_path(__FILE__) . 'include/as_tools_tab_serverinfo.php';
 
+###### Render Fields FOR TAB TOOLS
+include_once plugin_dir_path(__FILE__) . 'include/as_tools_tab_tools.php';
 
 
-########################## // Execute Functionality ################################
+
+########################## Execute Functionality ################################
+
+############## Include functions for General ############
 
 // Include function noopener noreferer
 include_once plugin_dir_path(__FILE__) . 'include/functions/as_fn_noopener.php';
@@ -204,27 +212,34 @@ include_once plugin_dir_path(__FILE__) . 'include/functions/as_fn_seo_small_func
 // Include function TAGS
 include_once plugin_dir_path(__FILE__) . 'include/functions/as_fn_tags.php';
 
+
+############## Include functions for TOOLS ############
+
 // Include function Switch Posttypes
 include_once plugin_dir_path(__FILE__) . 'include/functions/as_fn_posttype_switcher.php';
 
 include_once plugin_dir_path(__FILE__) . 'include/functions/as_fn_debugbar.php';
 
-// Include small functions for general and performance
-
-include_once plugin_dir_path(__FILE__) . 'include/functions/as_fn_general_small_functions.php';
-
 include_once plugin_dir_path(__FILE__) . 'include/functions/as_fn_remove_revisions.php';
 
 include_once plugin_dir_path(__FILE__) . 'include/functions/as_fn_remove_comments.php';
-
-// Include small functions for tab security
-include_once plugin_dir_path(__FILE__) . 'include/functions/as_fn_security_small_functions.php';
 
 // Include widget shortcode code
 include_once plugin_dir_path(__FILE__) . 'include/functions/as_fn_widget_shortcode.php';
 
 // Include Template File Admin Bar
 include_once plugin_dir_path(__FILE__) . 'include/functions/as_fn_templatefile.php';
+
+// Include CLONE
+include_once plugin_dir_path(__FILE__) . 'include/functions/as_fn_cloneposts.php';
+
+
+############## Include small functions for general and performance ############
+
+include_once plugin_dir_path(__FILE__) . 'include/functions/as_fn_general_small_functions.php';
+
+// Include small functions for tab security
+include_once plugin_dir_path(__FILE__) . 'include/functions/as_fn_security_small_functions.php';
 
 // Include Rename Login Path
 include_once plugin_dir_path(__FILE__) . 'include/functions/as_fn_rename_login.php';
